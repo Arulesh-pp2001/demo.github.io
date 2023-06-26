@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 h-screen grid place-items-center">
+    <div class="max-w-md flex flex-col space-y-3">
+        <input type="text" id="txtName" placeholder="Full name"
+            class="border-4 px-4 py-2 outline-none rounded-lg border-slate-200 focus:border-slate-500 ">
+        <input type="text" id="txtSubject" placeholder="Subject"
+            class="border-4 px-4 py-2 outline-none rounded-lg border-slate-200 focus:border-slate-500 ">
+        <textarea id="txtContent" cols="30" rows="10" placeholder="Your query"
+            class="border-4 px-4 py-2 outline-none rounded-lg border-slate-200 focus:border-slate-500 "></textarea>
+        <div class="flex justify-center pt-4">
+            <button id="btnSendMail"
+                class="px-4 py-2 bg-slate-700 outline-none text-white rounded-md hover:bg-slate-800 ring-2 ring-offset-2 ring-transparent transition-colors focus:ring-black">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // referrence all our elements in JavaScript
+        const txtName = document.querySelector('#txtName')
+        const txtSubject = document.querySelector('#txtSubject')
+        const txtContent = document.querySelector('#txtContent')
+        const btnSendMail = document.querySelector('#btnSendMail')
+
+        btnSendMail.addEventListener('click', () => {
+            const subject = encodeURIComponent(`Inquiry: ${txtSubject.value}`)
+            const body = encodeURIComponent(`Name: ${txtName.value}\n\n${txtSubject.value}`)
+
+            window.open(`mailto:?to=techkargls6@gmail.com&subject=${subject}&body=${body}`)
+        })
+    </script>
+</body>
+
+</html>
